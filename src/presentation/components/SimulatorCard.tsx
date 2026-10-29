@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import { getGrade, type GradeRecord, type GradingScheme, type Requirement, type ScenarioResult } from '@/modules/grading';
 import { formatGrade } from '../utils/format';
 
@@ -68,6 +69,7 @@ export function SimulatorCard({ scheme, scenario, simulatedGrades, target, onSim
                 max={scale.max}
                 step="any"
                 value={value}
+                style={{ '--fill': `${((value - scale.min) / (scale.max - scale.min)) * 100}%` } as CSSProperties}
                 onChange={(e) => onSimulatedChange(componentId, snapToStep(Number(e.target.value)))}
               />
               {showPerComponent && <span className={`hint hint--${hint.tone}`}>{hint.text} (con lo simulado en las demás)</span>}

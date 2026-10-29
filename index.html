@@ -6,6 +6,17 @@
     <meta name="description" content="Calcula tu nota final, lo que necesitas para ganar la materia y simula escenarios." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>Calculadora de Notas</title>
+    <script>
+      // Aplica el tema antes de pintar para evitar un destello del tema equivocado.
+      (function () {
+        var theme = null;
+        try { theme = localStorage.getItem('calculadora-notas:theme'); } catch (e) {}
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
